@@ -6,6 +6,7 @@
   "dependencies": {
     "body-parser": "^1.4.3",
     "express": "^4.4.5",
+    "marked": "^0.3.5",
     "react": "^0.14.6",
     "react-dom": "^0.14.6"
   },
@@ -19,7 +20,6 @@
     "eslint-config-standard": "^4.4.0",
     "eslint-plugin-react": "^4.2.3",
     "eslint-plugin-standard": "^1.3.1",
-    "eslint-config-airbnb": "^6.2.0",
     "webpack": "^1.12.10"
   },
   "scripts": {

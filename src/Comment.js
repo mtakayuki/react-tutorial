@@ -13,7 +13,7 @@ class Comment extends React.Component {
           <h2 className="commentAuthor">
             {this.props.author}
           </h2>
-          <span dangerouslySetInnerHTML={{ __html: this.rawMarkup()}} />
+          <span dangerouslySetInnerHTML={{ __html: this.rawMarkup() }} />
         </div>
     );
   }

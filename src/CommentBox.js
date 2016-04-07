@@ -7,10 +7,13 @@ class CommentBox extends React.Component {
     return (
         <div className="commentBox">
           <h1>Comments</h1>
-          <CommentList />
+          <CommentList data={this.props.data} />
           <CommentForm />
         </div>
     );
   }
 }
+CommentBox.propTypes = {
+  data: React.PropTypes.arrayOf(React.PropTypes.object),
+};
 export default CommentBox;

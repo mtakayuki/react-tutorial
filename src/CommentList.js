@@ -3,12 +3,21 @@ import Comment from './Comment';
 
 class CommentList extends React.Component {
   render() {
+    const commentNodes = this.props.data.map((comment) => {
+      return (
+          <Comment author={comment.author} key={comment.id}>
+            {comment.text}
+          </Comment>
+      );
+    });
     return (
         <div className="commentList">
-          <Comment author="Pete Hunt">This is one comment</Comment>
-          <Comment author="Jordan Walke">This is *another* comment</Comment>
+          {commentNodes}
         </div>
     );
   }
 }
+CommentList.propTypes = {
+  data: React.PropTypes.arrayOf(React.PropTypes.object),
+};
 export default CommentList;

@@ -60,7 +60,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_reactDom2.default.render(_react2.default.createElement(_CommentBox2.default, { url: '/api/comments' }), document.getElementById('content'));
+	_reactDom2.default.render(_react2.default.createElement(_CommentBox2.default, { url: '/api/comments', pollInterval: 2000 }), document.getElementById('content'));
 
 /***/ },
 /* 1 */
@@ -19712,12 +19712,13 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CommentBox).call(this, props));
 
 	    _this.state = { data: [] };
+	    _this.loadCommentsFromServer = _this.loadCommentsFromServer.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(CommentBox, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
+	    key: 'loadCommentsFromServer',
+	    value: function loadCommentsFromServer() {
 	      _jquery2.default.ajax({
 	        url: this.props.url,
 	        dataType: 'json',
@@ -19729,6 +19730,12 @@
 	          console.error(this.props.url, status, err.toString());
 	        }.bind(this)
 	      });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.loadCommentsFromServer();
+	      setInterval(this.loadCommentsFromServer, this.props.pollInterval);
 	    }
 	  }, {
 	    key: 'render',
@@ -19751,7 +19758,8 @@
 	}(_react2.default.Component);
 
 	CommentBox.propTypes = {
-	  url: _react2.default.PropTypes.string
+	  url: _react2.default.PropTypes.string,
+	  pollInterval: _react2.default.PropTypes.number
 	};
 	exports.default = CommentBox;
 

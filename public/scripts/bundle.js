@@ -31071,9 +31071,11 @@
 	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "div",
+	        "form",
 	        { className: "commentForm" },
-	        "Hello, world! I am a CommentForm."
+	        _react2.default.createElement("input", { type: "text", placeholder: "Your name" }),
+	        _react2.default.createElement("input", { type: "text", placeholder: "Say something..." }),
+	        _react2.default.createElement("input", { type: "submit", value: "Post" })
 	      );
 	    }
 	  }]);

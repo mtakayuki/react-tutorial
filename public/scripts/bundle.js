@@ -31038,7 +31038,7 @@
 /* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -31061,21 +31061,44 @@
 	var CommentForm = function (_React$Component) {
 	  _inherits(CommentForm, _React$Component);
 
-	  function CommentForm() {
+	  function CommentForm(props) {
 	    _classCallCheck(this, CommentForm);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(CommentForm).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CommentForm).call(this, props));
+
+	    _this.state = { author: '', text: '' };
+	    return _this;
 	  }
 
 	  _createClass(CommentForm, [{
-	    key: "render",
+	    key: 'handleAuthorChange',
+	    value: function handleAuthorChange(e) {
+	      this.setState({ author: e.target.value });
+	    }
+	  }, {
+	    key: 'handleTextChange',
+	    value: function handleTextChange(e) {
+	      this.setState({ text: e.target.value });
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "form",
-	        { className: "commentForm" },
-	        _react2.default.createElement("input", { type: "text", placeholder: "Your name" }),
-	        _react2.default.createElement("input", { type: "text", placeholder: "Say something..." }),
-	        _react2.default.createElement("input", { type: "submit", value: "Post" })
+	        'form',
+	        { className: 'commentForm' },
+	        _react2.default.createElement('input', {
+	          type: 'text',
+	          placeholder: 'Your name',
+	          value: this.state.author,
+	          onChange: this.handleAuthorChange
+	        }),
+	        _react2.default.createElement('input', {
+	          type: 'text',
+	          placeholder: 'Say something...',
+	          value: this.state.text,
+	          onChange: this.handleTextChange
+	        }),
+	        _react2.default.createElement('input', { type: 'submit', value: 'Post' })
 	      );
 	    }
 	  }]);

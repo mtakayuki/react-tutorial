@@ -31067,6 +31067,9 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CommentForm).call(this, props));
 
 	    _this.state = { author: '', text: '' };
+	    _this.handleAuthorChange = _this.handleAuthorChange.bind(_this);
+	    _this.handleTextChange = _this.handleTextChange.bind(_this);
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    return _this;
 	  }
 
@@ -31081,11 +31084,23 @@
 	      this.setState({ text: e.target.value });
 	    }
 	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      e.preventDefault();
+	      var author = this.state.author.trim();
+	      var text = this.state.text.trim();
+	      if (!text || !author) {
+	        return;
+	      }
+	      // TODO: send request to the server
+	      this.setState({ author: '', text: '' });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'form',
-	        { className: 'commentForm' },
+	        { className: 'commentForm', onSubmit: this.handleSubmit },
 	        _react2.default.createElement('input', {
 	          type: 'text',
 	          placeholder: 'Your name',
